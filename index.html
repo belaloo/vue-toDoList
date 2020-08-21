@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>ToDo List</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans&amp;display=swap'>
+  <link rel="stylesheet" href="./css/style.css">
+
+</head>
+
+<body>
+  <!-- Code Start -->
+  <div class="container" id="container">
+    <form>
+      <input type="text" placeholder="Type Your Task" v-model="taskText" />
+      <button @click.prevent="addTask" :disabled="!taskText">Add Task</button>
+      <button class="delete-all" v-if="tasks.length &gt; 1" @click.prevent="deleteAll">Delete All</button>
+    </form>
+    <div class="tasks-list" v-for="(task, index) in tasks">
+      <div class="task-box" @click="task.done = !task.done"
+        :style="{ 'text-decoration': task.done ? 'line-through' : '' }">{{ task.words }}</div>
+      <div class="delete" @click="deleteTask(index)">Delete</div>
+    </div>
+  </div>
+  <!-- Code End -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js'></script>
+  <script src="./js/script.js"></script>
+</body>
+
+</html>
